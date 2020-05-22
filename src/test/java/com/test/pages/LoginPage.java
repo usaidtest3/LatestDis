@@ -104,6 +104,7 @@ public class LoginPage extends FlowMethods {
 	   String locator = "";
 	   try
 	   {
+		   actionMethods.waitFor();
 		   locator = objectRepo.getProperty("Dis.Login.Gov");
 		   actionMethods.click(locator);
 		   locator = objectRepo.getProperty("Dis.GovInSignIN");
