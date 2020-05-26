@@ -73,7 +73,7 @@ public class Runner2 {
 		log.info("Generating Report Started in :" + Thread.currentThread().getName());
 		System.out.println();
 		Constant.extentReporter.flush();
-		System.out.println("Generating Report Started in :" + Thread.currentThread().getName());
+		//System.out.println("Generating Report Started in :" + Thread.currentThread().getName());
 		Constant.extentReporter.close();
 		 deleteFilesinFolder();
 		 Thread.sleep(10000);
@@ -93,7 +93,7 @@ public class Runner2 {
 		for (File file : dir.listFiles()) {
 			if (file.isDirectory() && (max == null || max.lastModified() < file.lastModified())) {
 				max = file;
-				System.out.println(" The latest folder in reports is "+ max);
+				//System.out.println(" The latest folder in reports is "+ max);
 			}
 		}
 		return max;
@@ -114,7 +114,7 @@ public class Runner2 {
 				if (file.lastModified() > lastModifiedTime) {
 					chosenFile = file;
 					lastModifiedTime = file.lastModified();
-					System.out.println("chosenFile " + chosenFile);
+					//System.out.println("chosenFile " + chosenFile);
 				}
 			}
 		}

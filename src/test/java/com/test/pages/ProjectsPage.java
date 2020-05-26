@@ -113,6 +113,7 @@ public class ProjectsPage extends FlowMethods{
 			locator = objectRepo.getProperty("Project.selectOfficeNmae");
 			actionMethods.click(locator);
 			locator = objectRepo.getProperty("Project.OfficeName");
+			System.out.println("ProjectTestData.OFFICE_NAME " + ProjectTestData.OFFICE_NAME);
 			actionMethods.selectDropDownData(locator, ProjectTestData.OFFICE_NAME);
 			locator = objectRepo.getProperty("Project.StartDate");
 			actionMethods.click(locator);
@@ -303,6 +304,7 @@ public class ProjectsPage extends FlowMethods{
 	{
 		try
 		{
+			System.out.println(" ProjectsPage selectLinkedIndicator");
 			String locator = objectRepo.getProperty("Project.LinkedInidiator");
 			actionMethods.click(locator);
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag+"getScreenShot", driver);

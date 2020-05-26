@@ -275,7 +275,7 @@ public class ActionMethods {
 
 			}
 		} catch (Exception e) {
-			System.out.println("Element is not preented");
+			System.out.println("Element is not Present");
 		}
 		return flag;
 	}
