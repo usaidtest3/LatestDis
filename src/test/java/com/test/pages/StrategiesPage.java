@@ -93,26 +93,33 @@ public class StrategiesPage extends FlowMethods{
 		try
 		{
 			locator = objectRepo.getProperty("Strategies.EditGoal");
+		
 			actionMethods.waitFor();
 			if(actionMethods.isElementPresentOptional(locator))
 				actionMethods.click(locator);
 			locator = objectRepo.getProperty("Strategis.GoalStatement");
 			actionMethods.enterInputMandatoryFiled(locator, goalStmt);
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("Strategis.Cancel");
 			actionMethods.click(locator);
+			
 			locator = objectRepo.getProperty("Strategis.WarningMsg");
+			System.out.println("Before Yes or no");
 			if(actionMethods.isElementPresent(locator))
 			{
+				System.out.println("verified the warning window");
 			if(action.contains("Yes"))
 			{
 				locator = objectRepo.getProperty("Strategis.YesBtn");
 				actionMethods.click(locator);
+				actionMethods.waitFor();
 				afterCancel_YES_NavigateToStrategisScreen();
 			}else
 			{
 				System.out.println("User has selected NO option");
 				locator = objectRepo.getProperty("Strategis.NoBtn");
 				actionMethods.click(locator);
+				actionMethods.waitFor();
 				validateTheGoalStatementFields();
 				locator = objectRepo.getProperty("Strategis.UpdateButton");
 				actionMethods.click(locator);

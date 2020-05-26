@@ -1,0 +1,7 @@
+/META-INF/
+/test-output/
+/POMFramework/*
+/target/**
+/TestData**
+/target/
+/test-output/

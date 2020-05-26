@@ -192,9 +192,12 @@ public class FlowMethods {
 	
 	public void addIndicatorToProject(String moduleName)
 	{
+		System.out.println("addIndicatorToProject");
 		ProjectsPage project = new ProjectsPage();
 		try
 		{
+			project.navigateToCreateProject();
+			System.out.println("ProjectTestData.PROJECT_NAME"+ProjectTestData.PROJECT_NAME);
 			project.searchProject(ProjectTestData.PROJECT_NAME);
 			project.viewProject(ProjectTestData.PROJECT_NAME);
 			project.selectMonitoringTab();
@@ -211,6 +214,7 @@ public class FlowMethods {
 		ProjectsPage project = new ProjectsPage();
 		try
 		{
+			System.out.println("Flow Methods deLinkIndicatorFromProject");
 			project.selectLinkedIndicator();
 			project.deLInkIndicatorCode(ProjectTestData.INDICATOR_CODE);
 			project.validateDelinkSuccessMsg();
@@ -264,20 +268,30 @@ public class FlowMethods {
 			activity.selectActivityName(ActivityTestData.ACTIVITY_NAME);
 			activity.navigateToFundingTab();
 			actionMethod.waitFor();
+			actionMethod.waitFor();
+			actionMethod.waitFor();
+			
 			activity.ClickOnAddFundingStrip();
 			activity.selectFundingOffice(ActivityTestData.FUNDING_OFFICE);
 			activity.selectsSourceIfFunding(ActivityTestData.SOURCE_OF_FUND);
+			actionMethod.waitFor();
 			activity.selectExternalSourceName(ActivityTestData.EXTERNAL_SOURCENAME);
+			System.out.println("After external source");
 			activity.selectDistibutionCode(ActivityTestData.DISTRIBUTIONCODE);
+			//activity.selectAppropriationAccount(ActivityTestData.FUNDACCOUNT);
 			activity.selectFundAccount(ActivityTestData.FUNDACCOUNT);
 			activity.selectPhonixCode(ActivityTestData.PHONIXACCOUNT);
 			activity.selectCategory(ActivityTestData.CATEGORY);
 			activity.selectProgramArea(ActivityTestData.PROGAM_AREA);
 			activity.selectProgramEleemnt(ActivityTestData.PROGAM_ELEMENT);
+		
 			activity.selectFundingType(ActivityTestData.FUNDING_TYPE);
+			activity.selectDirectAndPdl();
+			
 			activity.saveBaseLineData();
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);
 		} catch (Exception e) {
+			System.out.println("came into exception");
 			activity.discardChanges();
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);
 		}
