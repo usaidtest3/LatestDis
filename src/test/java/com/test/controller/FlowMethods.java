@@ -675,7 +675,9 @@ public class FlowMethods {
 			activity.enterPartnerName(ActivityTestData.COP_NAME);
 			activity.enterPartnerEmail(ActivityTestData.COPEMAIL);
 			activity.enterPartnerAddres(ActivityTestData.COP_ADDRESS);
+			System.out.println(ActivityTestData.COP_COUNTRY+ActivityTestData.COP_PHONE+ActivityTestData.COP_EXTN);
 			activity.selectPhoneNum(ActivityTestData.COP_COUNTRY, ActivityTestData.COP_PHONE, ActivityTestData.COP_EXTN);
+			System.out.println(ActivityTestData.COP_COUNTRY+ActivityTestData.COP_PHONE+ActivityTestData.COP_EXTN);
 			activity.selectPhoneNum2(ActivityTestData.COP_COUNTRY, ActivityTestData.COP_PHONE, ActivityTestData.COP_EXTN);
 			activity.saveNonGlassAcivityDetails();
 			//Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);

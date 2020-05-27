@@ -3,6 +3,7 @@ package com.test.pages;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import com.test.controller.ActionMethods;
 import com.test.controller.FlowMethods;
@@ -122,7 +123,7 @@ public class ActivitiesPage extends FlowMethods {
 				locator = objectRepo.getProperty("NonGlassActivity.awardtYpeDropdown");
 				actionMethods.selectDropDownData(locator, ActivityTestData.AWARDTYPE);
 			}
-			locator = objectRepo.getProperty("GlaasActivities.YesButton");
+			locator = objectRepo.getProperty("GlaasActivities.NoButton");
 			actionMethods.click(locator);
 
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(),
@@ -367,17 +368,35 @@ public class ActivitiesPage extends FlowMethods {
 	public void selectPhoneNum(String countryCode, String phoneNum, String extnNum) {
 		String locator;
 		try {
-
+			/*
+			 * JavascriptExecutor js = (JavascriptExecutor) driver; js.executeScript(
+			 * "document.getElementByXpath('(//input[@placeholder=\"999999\"])[1]').value='123456';"
+			 * );
+			 */
+			
+			
 			locator = objectRepo.getProperty("PartnerDetails.SeelctCountryCode");
 			actionMethods.click(locator);
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("PartnerDetails.SeelctCountryCodeDropdown");
 			actionMethods.selectDropDownData(locator, ActivityTestData.COP_COUNTRY);
-			locator = objectRepo.getProperty("PartnerDetails.MobileNum");
-			actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_PHONE);
-			actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_PHONE);
-			locator = objectRepo.getProperty("PartnerDetails.extn");
-			actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_EXTN);
-			actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_EXTN);
+			
+			driver.findElement(By.xpath("(//input[@placeholder=\"999999\"])[1]")).click();
+			driver.findElement(By.xpath("(//input[@placeholder=\"999999\"])[1]")).sendKeys(phoneNum);
+			driver.findElement(By.xpath("(//input[@placeholder=\"x9999\"])[1]")).click();
+			driver.findElement(By.xpath("(//input[@placeholder=\"x9999\"])[1]")).sendKeys(extnNum);
+			
+			/*
+			 * locator = objectRepo.getProperty("PartnerDetails.MobileNum");
+			 * 
+			 * 
+			 * actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_PHONE);
+			 * actionMethods.waitFor(); //actionMethods.enterInputMandatoryFiled(locator,
+			 * ActivityTestData.COP_PHONE); locator =
+			 * objectRepo.getProperty("PartnerDetails.extn");
+			 * actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_EXTN);
+			 */actionMethods.waitFor();
+			//actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_EXTN);
 
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(),
 					Constant.statusFlag + "PhoneNumber : " + phoneNum, driver);
@@ -391,16 +410,25 @@ public class ActivitiesPage extends FlowMethods {
 	public void selectPhoneNum2(String countryCode, String phoneNum, String extnNum) {
 		String locator;
 		try {
-
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("PartnerDetails.SeelctCountryCode2");
 			actionMethods.click(locator);
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("PartnerDetails.SeelctCountryCodeDropdown2");
 			actionMethods.selectDropDownData(locator, ActivityTestData.COP_COUNTRY);
-			locator = objectRepo.getProperty("PartnerDetails.PhoneNUm2");
-			actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_PHONE);
-			locator = objectRepo.getProperty("PartnerDetails.extn2");
-			actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_EXTN);
-
+			
+			driver.findElement(By.xpath("//div[@aria-label='Primary Phone Number']/descendant::input")).click();
+			driver.findElement(By.xpath("//div[@aria-label='Primary Phone Number']/descendant::input")).sendKeys(phoneNum);
+			driver.findElement(By.xpath("((//label[text()='Phone Number '])/following-sibling::div/div[3])[1]/descendant::input")).click();
+			driver.findElement(By.xpath("((//label[text()='Phone Number '])/following-sibling::div/div[3])[1]/descendant::input")).sendKeys(extnNum);
+			
+			/*
+			 * locator = objectRepo.getProperty("PartnerDetails.PhoneNUm2");
+			 * actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_PHONE);
+			 * actionMethods.waitFor(); locator =
+			 * objectRepo.getProperty("PartnerDetails.extn2");
+			 * actionMethods.enterInputMandatoryFiled(locator, ActivityTestData.COP_EXTN);
+			 */
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(),
 					Constant.statusFlag + "PhoneNumber : " + phoneNum, driver);
 		} catch (Exception e) {
@@ -690,8 +718,10 @@ public class ActivitiesPage extends FlowMethods {
 			locator = objectRepo.getProperty("NonGlassActivity.OrderNo");
 			actionMethods.enterInputMandatoryFiled(locator,
 					ActivityTestData.ORDER_NO + actionMethods.genarateRandomNumber(3));
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("NonGlassActivity.StartDate");
 			actionMethods.click(locator);
+			actionMethods.waitFor();
 			project.selectCalanderDate(ActivityTestData.START_DATE);
 			locator = objectRepo.getProperty("NonGlassActivity.EndDate");
 			actionMethods.click(locator);
