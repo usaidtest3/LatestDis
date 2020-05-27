@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 
 import com.test.controller.ActionMethods;
 import com.test.controller.FlowMethods;
@@ -118,10 +119,13 @@ public class ProjectsPage extends FlowMethods{
 			actionMethods.waitFor();
 			locator = objectRepo.getProperty("Project.StartDate");
 			actionMethods.click(locator);
+			actionMethods.waitFor();
 			selectCalanderDate(ProjectTestData.START_DATE);
 			actionMethods.waitFor();
 			locator = objectRepo.getProperty("Project.EndDate");
 			actionMethods.click(locator);
+			actionMethods.waitFor();
+
 			selectCalanderDate(ProjectTestData.END_DATE);
 			locator = objectRepo.getProperty("Project.Status");
 			actionMethods.click(locator);
@@ -273,12 +277,20 @@ public class ProjectsPage extends FlowMethods{
 	{
 		try
 		{
+			System.out.println("deLInkIndicatorCode");
+			actionMethods.waitFor();
+			actionMethods.waitFor();
+			actionMethods.waitFor();
 			String locator = "";
 			locator = objectRepo.getProperty("Project.Delink");
 			actionMethods.click(locator.replace("Dummy", indicatorCode));
 			
+			System.out.println("clicked on project to be delinnked ");
+			
 			locator = objectRepo.getProperty("Project.clickOnDelink");
 			actionMethods.click(locator);
+			//driver.findElement(By.xpath("(//div[text()='Delink'])[2]")).click();
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("Dis.Yes");
 			actionMethods.click(locator);
 			
