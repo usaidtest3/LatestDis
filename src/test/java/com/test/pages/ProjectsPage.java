@@ -115,9 +115,11 @@ public class ProjectsPage extends FlowMethods{
 			locator = objectRepo.getProperty("Project.OfficeName");
 			System.out.println("ProjectTestData.OFFICE_NAME " + ProjectTestData.OFFICE_NAME);
 			actionMethods.selectDropDownData(locator, ProjectTestData.OFFICE_NAME);
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("Project.StartDate");
 			actionMethods.click(locator);
 			selectCalanderDate(ProjectTestData.START_DATE);
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("Project.EndDate");
 			actionMethods.click(locator);
 			selectCalanderDate(ProjectTestData.END_DATE);
