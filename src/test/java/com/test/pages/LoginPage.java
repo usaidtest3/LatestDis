@@ -52,7 +52,7 @@ public class LoginPage extends FlowMethods {
 			locator = objectRepo.getProperty("Gmail.Next");
 			actionMethods.click(locator);
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(),
-					Constant.statusFlag + "Login details : " + userNmae + "/" + password, driver);
+					Constant.statusFlag + "Login details : " + userNmae + "/"  +"***********", driver);
 		} catch (Exception e) {
 			log.error("Exception Occured at loginGmailAccount : " + e.getMessage());
 			Constant.statusFlag = "Failed";
