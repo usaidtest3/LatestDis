@@ -104,7 +104,8 @@ public class LoginPage extends FlowMethods {
 	public void loginDISApplication(String userName, String passWord) throws Exception {
 		String locator = "";
 		try {
-			actionMethods.waitFor();
+			Thread.sleep(15000);
+			//actionMethods.waitFor();
 			locator = objectRepo.getProperty("Dis.Login.Gov");
 			actionMethods.click(locator);
 			locator = objectRepo.getProperty("Dis.GovInSignIN");
