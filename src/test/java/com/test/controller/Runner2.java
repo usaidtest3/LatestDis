@@ -82,6 +82,8 @@ public class Runner2 {
 		// copy(f2);
 		CopyFile(f2);
 		log.info("Generating Report Started in");
+		
+		ActionMethods.driver.quit();
 	}
 
 	public static File latestFolder() {

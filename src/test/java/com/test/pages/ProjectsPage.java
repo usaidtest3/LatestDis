@@ -284,11 +284,20 @@ public class ProjectsPage extends FlowMethods{
 			String locator = "";
 			locator = objectRepo.getProperty("Project.Delink");
 			actionMethods.click(locator.replace("Dummy", indicatorCode));
+			try {
+				actionMethods.waitFor();
+				driver.findElement(By.xpath("(//div[text()='Delink'])")).click();
+			} catch (Exception e) {
+				actionMethods.waitFor();
+				driver.findElement(By.xpath("(//div[text()='Delink'])[2]")).click();
+				// TODO: handle exception
+			}
+			
 			
 			System.out.println("clicked on project to be delinnked ");
 			
-			locator = objectRepo.getProperty("Project.clickOnDelink");
-			actionMethods.click(locator);
+//			locator = objectRepo.getProperty("Project.clickOnDelink");
+//			actionMethods.click(locator);
 			//driver.findElement(By.xpath("(//div[text()='Delink'])[2]")).click();
 			actionMethods.waitFor();
 			locator = objectRepo.getProperty("Dis.Yes");

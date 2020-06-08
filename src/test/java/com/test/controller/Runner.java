@@ -55,6 +55,7 @@ public class Runner {
 			Constant.extentReporter.flush();
 			Constant.extentReporter.close();
 			log.info("Report Generated successfully");
+			ActionMethods.driver.quit();
 		}
 
 		public static void execute_Actions(String flowID,String testSuiteModuleName) throws Exception {
