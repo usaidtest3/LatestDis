@@ -65,6 +65,7 @@ public class FlowMethods {
 				System.out.println("in flow methods ");
 				driver = actionMethod.openBrowser();
 				actionMethod.launchURL(Constant.URL);
+				
 				System.out.println("Constant.URL" +Constant.URL);
 				String loginDetails = TestDataObjectLogin.LOGIN_DETAILS;
 				login.loginDISApplication(loginDetails.split("/")[0],loginDetails.split("/")[1].split("~")[1]);
