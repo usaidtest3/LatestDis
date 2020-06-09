@@ -705,6 +705,11 @@ public class FlowMethods {
 			actionMethod.waitFor();
 			actionMethod.waitFor();
 			actionMethod.waitFor();
+			new ProjectsPage().navigateToCreateProject();
+			actionMethod.waitFor();
+			
+		
+			
 			activity.navigateToActivityScreen();
 			//Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);
