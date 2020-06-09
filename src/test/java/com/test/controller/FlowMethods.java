@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.test.excelAPI.ExcelOperation;
@@ -233,6 +234,8 @@ public class FlowMethods {
 		{
 			activity.navigateToActivityScreen();
 			activity.selectGlassActivity(ActivityTestData.ACTIVITY_NAME);
+			activity.navigateToActivityScreen();
+			
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);
 		} catch (Exception e) {
 			
@@ -269,8 +272,6 @@ public class FlowMethods {
 			activity.selectActivityName(ActivityTestData.ACTIVITY_NAME);
 			activity.navigateToFundingTab();
 			actionMethod.waitFor();
-			actionMethod.waitFor();
-			actionMethod.waitFor();
 			
 			activity.ClickOnAddFundingStrip();
 			activity.selectFundingOffice(ActivityTestData.FUNDING_OFFICE);
@@ -282,14 +283,34 @@ public class FlowMethods {
 			//activity.selectAppropriationAccount(ActivityTestData.FUNDACCOUNT);
 			activity.selectFundAccount(ActivityTestData.FUNDACCOUNT);
 			activity.selectPhonixCode(ActivityTestData.PHONIXACCOUNT);
+			actionMethod.waitFor();
+			
+			ActionMethods.driver.findElement(By.xpath("//*[text()='Select EBFY']")).click();
+			actionMethod.waitFor();
+			ActionMethods.driver.findElement(By.xpath("//*[text()=' 2021 ']")).click();
+			actionMethod.waitFor();
+			ActionMethods.driver.findElement(By.xpath("//*[text()='Select Funding Type']")).click();
+			actionMethod.waitFor();
+			ActionMethods.driver.findElement(By.xpath("//*[text()=' NOA ']")).click();
+//			actionMethod.waitFor();
+			//*[text()='Select Funding Type']
 			activity.selectCategory(ActivityTestData.CATEGORY);
 			activity.selectProgramArea(ActivityTestData.PROGAM_AREA);
 			activity.selectProgramEleemnt(ActivityTestData.PROGAM_ELEMENT);
 		
-			activity.selectFundingType(ActivityTestData.FUNDING_TYPE);
+			//activity.selectFundingType(ActivityTestData.FUNDING_TYPE);
 			activity.selectDirectAndPdl();
+			System.out.println("aftermoney");
+			
+			actionMethod.waitFor();
+			actionMethod.waitFor();
+			
 			
 			activity.saveBaseLineData();
+			actionMethod.waitFor();
+			activity.deleteFundingStrip();
+			actionMethod.waitFor();
+			activity.navigateToActivityScreen();
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);
 		} catch (Exception e) {
 			System.out.println("came into exception");
@@ -681,6 +702,10 @@ public class FlowMethods {
 			System.out.println(ActivityTestData.COP_COUNTRY+ActivityTestData.COP_PHONE+ActivityTestData.COP_EXTN);
 			activity.selectPhoneNum2(ActivityTestData.COP_COUNTRY, ActivityTestData.COP_PHONE, ActivityTestData.COP_EXTN);
 			activity.saveNonGlassAcivityDetails();
+			actionMethod.waitFor();
+			actionMethod.waitFor();
+			actionMethod.waitFor();
+			activity.navigateToActivityScreen();
 			//Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag, driver);
 		} catch (Exception e) {

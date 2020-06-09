@@ -796,4 +796,32 @@ public class ActivitiesPage extends FlowMethods {
 					Constant.statusFlag, driver);
 		}		
 	}
+
+	public void deleteFundingStrip() {
+		try {
+			System.out.println("cameintotry");
+			//String locator = objectRepo.getProperty("Dis.SaveBtn");
+			actionMethods.scrollToElement("//*[@class='mat-raised-button mat-warn']~Xpath");
+			//actionMethods.click("//*[@class='mat-raised-button mat-warn']~Xpath");
+			System.out.println("clicked on Delete");
+			actionMethods.waitFor();
+			ActionMethods.driver.findElement(By.xpath("(//button[@class='mat-raised-button mat-primary' and @color='primary'])[2]")).click();
+			System.out.println("clickedon Yes");
+			actionMethods.waitFor();
+			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(),
+					Constant.statusFlag, driver);
+		} catch (Exception e) {
+			System.out.println("deleteFundingStripExe");
+			//String locator = objectRepo.getProperty("Dis.CancelBtn");
+			//actionMethods.click("//*[@class='mat-raised-button mat-warn']~Xpath");
+			actionMethods.waitFor();
+			ActionMethods.driver.findElement(By.xpath("//button[@class='mat-raised-button mat-primary' and @color='primary']")).click();
+			actionMethods.waitFor();
+			//Constant.statusFlag = "Failed";
+			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(),
+					Constant.statusFlag + "DeleteStrip button selected", driver);
+		}
+
+				
+	}
 }
