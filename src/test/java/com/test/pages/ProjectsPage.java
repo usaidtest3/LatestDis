@@ -279,11 +279,13 @@ public class ProjectsPage extends FlowMethods{
 		{
 			System.out.println("deLInkIndicatorCode");
 			actionMethods.waitFor();
-			actionMethods.waitFor();
+			//actionMethods.waitFor();
 			actionMethods.waitFor();
 			String locator = "";
-			locator = objectRepo.getProperty("Project.Delink");
-			actionMethods.click(locator.replace("Dummy", indicatorCode));
+			//locator = objectRepo.getProperty("Project.Delink");
+			//actionMethods.click(locator.replace("Dummy", indicatorCode));
+			ActionMethods.driver.findElement(By.xpath("//*[contains(text(),'"+indicatorCode+" ')]/ancestor::td/following-sibling::td[5]/span")).click();
+			System.out.println("After clicking on LInk");
 			try {
 				actionMethods.waitFor();
 				driver.findElement(By.xpath("(//div[text()='Delink'])")).click();

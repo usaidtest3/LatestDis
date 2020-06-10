@@ -35,6 +35,7 @@ public class BudgetPage extends FlowMethods {
 			locator = objectRepo.getProperty("Budget.Office");
 			actionMethods.click(locator);
 			actionMethods.waitFor();
+			actionMethods.waitFor();
 			locator = objectRepo.getProperty("Budget.RunReportBtn");
 			actionMethods.click(locator);
 			actionMethods.waitFor();

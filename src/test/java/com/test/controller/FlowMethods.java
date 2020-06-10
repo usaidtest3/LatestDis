@@ -689,7 +689,7 @@ public class FlowMethods {
 		{
 			activity.navigateToActivityScreen();
 			activity.selectAwardDetails();
-			String activityName = ActivityTestData.ACTIVITY_NAME+actionMethod.genarateRandomNumber(5);
+			String activityName = ActivityTestData.ACTIVITY_NAME+actionMethod.genarateRandomNumber(7);
 			excelOpr.updateReferencevalue(moduleName, "activityName", activityName, ActivityTestData.LINK_REF);
 			activity.addActivityDetails(activityName);
 			activity.addUSAIDOfficeDetails();
