@@ -176,7 +176,8 @@ public class ProjectsPage extends FlowMethods{
 		try
 		{
 			String locator = objectRepo.getProperty("Project.ViewProject");
-			actionMethods.click(locator.replace("Dummy", enterName));
+			//actionMethods.click(locator.replace("Dummy", enterName));
+			actionMethods.click(locator);
 			actionMethods.waitFor();
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(), Constant.statusFlag+"Project Name : "+enterName, driver);
 		} catch (Exception e) {
