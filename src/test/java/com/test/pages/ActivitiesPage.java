@@ -98,7 +98,7 @@ public class ActivitiesPage extends FlowMethods {
 		String locator = "";
 		try {
 			locator = objectRepo.getProperty("GlaasActivities.activityName");
-			actionMethods.enterInputMandatoryFiled(locator, activityName1);
+			actionMethods.enterInputMandatoryFiled(locator, activityName1+ actionMethods.genarateRandomNumber(6));
 			locator = objectRepo.getProperty("GlaasActivities.activityAcronym");
 			activityAcronym = ActivityTestData.ACTIVITY_ACRONYM + actionMethods.genarateRandomNumber(4);
 			actionMethods.enterInputMandatoryFiled(locator, activityAcronym);
@@ -714,7 +714,7 @@ public class ActivitiesPage extends FlowMethods {
 					ActivityTestData.AWARD_NAME + actionMethods.genarateRandomNumber(6));
 			locator = objectRepo.getProperty("NonGlassActivity.AwardNum");
 			actionMethods.enterInputMandatoryFiled(locator,
-					ActivityTestData.AWARD_NO + actionMethods.genarateRandomNumber(3));
+					ActivityTestData.AWARD_NO + actionMethods.genarateRandomNumber(6));
 			locator = objectRepo.getProperty("NonGlassActivity.OrderNo");
 			actionMethods.enterInputMandatoryFiled(locator,
 					ActivityTestData.ORDER_NO + actionMethods.genarateRandomNumber(3));
