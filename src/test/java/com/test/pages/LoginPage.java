@@ -15,6 +15,7 @@ import com.test.excelAPI.ExcelOperation;
 import com.test.testData.OverviewTestData;
 import com.test.testData.TestDataObjectLogin;
 import com.test.utils.Constant;
+import com.test.utils.GetPassCode;
 
 public class LoginPage extends FlowMethods {
 
@@ -36,16 +37,22 @@ public class LoginPage extends FlowMethods {
 
 	public void loginGmailAccount(String userNmae, String password) {
 		String locator;
+		String us=userNmae; String ps=password;
 		try {
 			// locator = objectRepo.getProperty("Gmail.SignIn");
 			// actionMethods.click(locator);
 			actionMethods.waitFor();
 
-			// actionMethods.switchToTab();
-			locator = objectRepo.getProperty("Gmail.EnterEmail");
-			actionMethods.enterInputMandatoryFiled(locator, userNmae);
-			locator = objectRepo.getProperty("Gmail.Next");
+			
+				locator = objectRepo.getProperty("Gmail.EnterEmail");
+				actionMethods.enterInputMandatoryFiled(locator, userNmae);
+				locator = objectRepo.getProperty("Gmail.Next");
+				actionMethods.click(locator);
+			loginGmailAccount(us,ps);
+			
+					locator = objectRepo.getProperty("Gmail.Next");
 			actionMethods.click(locator);
+			
 			locator = objectRepo.getProperty("Gmail.EnterPassword");
 			actionMethods.waitFor();
 			actionMethods.enterInputMandatoryFiled(locator, password);
@@ -64,33 +71,17 @@ public class LoginPage extends FlowMethods {
 	}
 
 	public String getOtP() {
-		String locator, getOTP = "";
+		String locator, getOTPValue = "";
 		try {
-			actionMethods.waitFor();
-			locator = objectRepo.getProperty("Gmail.selectMail");
-			actionMethods.click(locator);
-			actionMethods.waitFor();
-			locator = objectRepo.getProperty("Gmail.GetOtp");
-			getOTP = actionMethods.getText(locator);
-			System.out.println("Login OTP : " + getOTP.split(" ")[1]);
 
-			try {
 
-				locator = objectRepo.getProperty("Gmail.inbox");
-				actionMethods.click(locator);
-				actionMethods.waitFor();
-				locator = objectRepo.getProperty("Gmail.checkBox");
-				actionMethods.click(locator);
-				actionMethods.waitFor();
-				locator = objectRepo.getProperty("Gmail.delete");
-				actionMethods.click(locator);
-				actionMethods.waitFor();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+			
+			getOTPValue=GetPassCode.check();
+			
 
 			Report.getInstance().generateReport(Thread.currentThread().getStackTrace()[1].getMethodName(),
-					Constant.statusFlag + getOTP, driver);
+					Constant.statusFlag + getOTPValue, driver);
+			//return getOTPValue;
 		} catch (Exception e) {
 			log.error("Exception Occured at getOtP : " + e.getMessage());
 			Constant.statusFlag = "Failed";
@@ -98,7 +89,8 @@ public class LoginPage extends FlowMethods {
 					Constant.statusFlag, driver);
 			throw e;
 		}
-		return getOTP.split(" ")[1];
+		return getOTPValue;
+		//return getOTP.split(" ")[1];
 	}
 
 	public void loginDISApplication(String userName, String passWord) throws Exception {
@@ -106,7 +98,7 @@ public class LoginPage extends FlowMethods {
 		try {
 			Thread.sleep(10000);
 		actionMethods.driver.navigate().refresh();
-			Thread.sleep(10000);
+			//Thread.sleep(10000);
 			//actionMethods.waitFor();
 			locator = objectRepo.getProperty("Dis.Login.Gov");
 			actionMethods.click(locator);
@@ -127,15 +119,17 @@ public class LoginPage extends FlowMethods {
 			// locator = objectRepo.getProperty("Dis.Continue");
 			// actionMethods.click(locator);
 
-			actionMethods.launchChrome();
+		//	actionMethods.launchChrome();
 			// actionMethods.launchURL("");
 			String gmailLoginDetails = TestDataObjectLogin.LOGIN_DETAILS;
 			System.out.println("login password " + gmailLoginDetails.split("/")[1].split("~")[0]);
-			Thread.sleep(2000);
-			loginGmailAccount(gmailLoginDetails.split("/")[0], gmailLoginDetails.split("/")[1].split("~")[0]);
+			Thread.sleep(5000);
+			//loginGmailAccount(gmailLoginDetails.split("/")[0], gmailLoginDetails.split("/")[1].split("~")[0]);
 			String s = getOtP();
+			
+			System.out.println("The Otp we recived is "+s);
 
-			actionMethods.closeWindow();
+			//actionMethods.closeWindow();
 			// actionMethods.switchToParentWindow();
 
 			locator = objectRepo.getProperty("Dis.Otp");
